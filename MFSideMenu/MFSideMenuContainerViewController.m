@@ -173,6 +173,7 @@ typedef enum {
     if(!_centerViewController) return;
     
     [self addChildViewController:_centerViewController];
+    [[_centerViewController view] setFrame:[[self view] bounds]];
     [self.view addSubview:[_centerViewController view]];
     [_centerViewController didMoveToParentViewController:self];
 }
