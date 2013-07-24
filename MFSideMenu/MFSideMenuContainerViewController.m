@@ -219,7 +219,6 @@ typedef enum {
     [[self.centerViewController view] addGestureRecognizer:tapRecognizer];
     
     [[self.centerViewController view] addGestureRecognizer:[self panGestureRecognizer]];
-    [menuContainerView addGestureRecognizer:[self panGestureRecognizer]];
 }
 
 
