@@ -100,10 +100,16 @@ typedef enum {
     [self.view insertSubview:menuContainerView atIndex:0];
     
     if(self.leftMenuViewController && !self.leftMenuViewController.view.superview) {
+        CGRect frame = [[[self leftMenuViewController] view] frame];
+        frame.size.height = [[self menuContainerView] bounds].size.height;
+        [[[self leftMenuViewController] view] setFrame:frame];
         [self.menuContainerView addSubview:self.leftMenuViewController.view];
     }
     
     if(self.rightMenuViewController && !self.rightMenuViewController.view.superview) {
+        CGRect frame = [[[self rightMenuViewController] view] frame];
+        frame.size.height = [[[self rightMenuViewController] view] bounds].size.height;
+        [[[self rightMenuViewController] view] setFrame:frame];
         [self.menuContainerView addSubview:self.rightMenuViewController.view];
     }
 }
@@ -159,6 +165,7 @@ typedef enum {
     
     [self addChildViewController:_leftSideMenuViewController];
     if(self.menuContainerView.superview) {
+        [[_leftSideMenuViewController view] setFrame:[[self menuContainerView] bounds]];
         [self.menuContainerView insertSubview:[_leftSideMenuViewController view] atIndex:0];
     }
     [_leftSideMenuViewController didMoveToParentViewController:self];
